@@ -1,0 +1,83 @@
+1) using System;
+class Vehicle
+{
+    public string Model { get; set; }
+    public virtual void ShowModel()
+    {
+        Console.WriteLine($"Model {Model}");
+    }
+}
+class Car : Vehicle
+{
+    public string Brand { get; set; }
+    public void ShowDetails()
+    {
+        Console.WriteLine($"Brand {Brand}");
+        ShowModel();
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        string brand = Console.ReadLine();
+        string model = Console.ReadLine();
+        Car car = new Car
+        {
+            Brand = brand,
+            Model = model
+
+        };
+        car.ShowDetails();
+    }
+}
+2) using System;
+class Account
+{
+    protected decimal balance;
+    public Account(decimal initialBalance)
+    {
+        balance = initialBalance;
+    }
+}
+class User : Account
+{
+    public string Number { get; set; }
+    public User(string number, decimal initialBalance) : base(initialBalance)
+    {
+        Number = number;
+    }
+    public void ShowDetails()
+    {
+        Console.WriteLine($"Аккаунт N {Number}");
+        Console.WriteLine($"Баланс {balance}");
+    }
+}
+class Program
+{
+    static void Main(string[] args)	
+    {
+        string number = Console.ReadLine();
+        decimal initialBalance = decimal.Parse(Console.ReadLine());
+        User user = new User(number, initialBalance);
+        user.ShowDetails();
+    }
+}
+3) using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] grades = { 4, 4, 5, 5, 5, 5, 2, 2, 4, 5, 5, 2, 2, 2, 2, 5, 5, 2, 2, 2, 3, 3, 3, 3 };
+        int Count = 0;
+        foreach (int grade in grades)
+        {
+            if (grade < 3)
+            {
+                Count++;
+            }
+        }
+        Console.WriteLine($"Количество неуспевающих учеников по химии: {Count}");
+    }
+}
