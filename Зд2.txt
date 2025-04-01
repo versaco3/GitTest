@@ -1,0 +1,15 @@
+using System;
+class program
+{
+    static void Main(string[] args)
+    {
+        int num1 = 150;
+        int num2 = 30;
+        int maxNumber = Max(num1, num2);
+        Console.WriteLine($"Максимальное число: {maxNumber}");  
+        static int Max(int a, int b)
+        {
+            return (a > b) ? a : b;
+        }
+    }
+}

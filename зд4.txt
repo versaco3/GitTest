@@ -1,0 +1,66 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double a = 1;
+        double b = -3;
+        double c = 2;
+        double root1, root2;
+
+        int result = SolveQuadraticEquation(a, b, c, out root1, out root2);
+
+        if (result == -1)
+        {
+            Console.WriteLine("Некорректные входные данные.");
+        }
+        else if (result == 0)
+        {
+            Console.WriteLine("Уравнение не имеет решения.");
+        }
+        else if (result == 1)
+        {
+            Console.WriteLine($"У уравнения один корень: x = {root1}");
+        }
+        else if (result == 2)
+        {
+            Console.WriteLine($"У уравнения два разных корня: x1 = {root1}, x2 = {root2}");
+        }
+    }
+
+    static int SolveQuadraticEquation(double a, double b, double c, out double root1, out double root2)
+    {
+        root1 = root2 = 0;
+
+
+        if (double.IsNaN(a) || double.IsNaN(b) || double.IsNaN(c) || double.IsInfinity(a) || double.IsInfinity(b) || double.IsInfinity(c))
+        {
+            return -1;
+        }
+
+        if (a == 0)
+        {
+            return -1;
+        }
+
+        double discriminant = b * b - 4 * a * c;
+
+        if (discriminant > 0)
+        {
+            root1 = (-b + Math.Sqrt(discriminant)) / (2 * a);
+            root2 = (-b - Math.Sqrt(discriminant)) / (2 * a);
+            return 2;
+        }
+        else if (discriminant == 0)
+        {
+            root1 = -b / (2 * a);
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+}
+

@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int result = ReadPositiveInteger();
+        Console.WriteLine($" Вы ввели число: {result}");
+    }
+
+    static int ReadPositiveInteger()
+    {
+        string input = string.Empty;
+        while (true)
+        {
+
+            ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true);
+
+
+            if (keyInfo.Key == ConsoleKey.Enter)
+            {
+
+                if (int.TryParse(input, out int number) && number > 0)
+                {
+                    return number;
+                }
+                else
+                {
+                    Console.WriteLine("\nОшибка: введите корректное положительное целое число.");
+                    input = string.Empty;
+                }
+            }
+
+            else if (char.IsDigit(keyInfo.KeyChar))
+            {
+                input += keyInfo.KeyChar;
+                Console.Write(keyInfo.KeyChar);
+            }
+
+            else if (keyInfo.Key == ConsoleKey.Backspace && input.Length > 0)
+            {
+
+                input = input.Remove(input.Length - 1);
+                Console.Write("\b \b");
+            }
+        }
+    }
+}

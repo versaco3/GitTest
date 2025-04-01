@@ -1,0 +1,17 @@
+using System;
+class Program
+{
+    static void Main()
+    {
+        decimal summaVklada = 60000m;
+        double procStavka = 6.0;
+        int srokDney = 180;
+        decimal dohod = Dohod(summaVklada, procStavka, srokDney);
+        Console.WriteLine($"Доход от вклада составит: {dohod:C}");
+    }
+    static decimal Dohod(decimal summaVklada, double procStavka, int srokDney)
+    {
+        decimal dohod = summaVklada * (decimal)(procStavka / 100) * ((decimal)srokDney / 365);
+        return dohod;
+    }
+}
